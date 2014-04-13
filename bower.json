@@ -1,0 +1,16 @@
+{
+  "name": "e-commerce",
+  "version": "0.0.0",
+  "authors": [
+    "w4rlock <warlock.gpl@gmail.com>"
+  ],
+  "description": "e-commerce scrap site comparator",
+  "main": "app.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "pace": "~0.5.1",
+    "bootstrap": "~3.1.1",
+    "jquery": "~2.1.0"
+  }
+}
