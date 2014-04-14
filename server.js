@@ -6,6 +6,7 @@ var express = require('express')
   , validator = require('express-validator')
   , cron = require('cron').CronJob
   , path = require('path')
+  , favicon = require('favicon')
   , app = express()
   , config = require('./config').init(app)
   , db = require('monk')(config.DB_URL)
@@ -25,8 +26,11 @@ app.use(require('body-parser')())
 //app.use(validator());
 //app.use(express.responseTime());
 //app.use(express.compress());
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+//app.use(connect.favicon());
+//app.use(express.favicon("public/favicon.ico"));
 app.use('/public', express.static(path.join(__dirname, 'public')));
+
+//app.use(favicon(__dirname + '/public/favicon.ico'));
 
 //-- ROUTES
 app.get('/', function(req, res) { res.send(app.routes); });

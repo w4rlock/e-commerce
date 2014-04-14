@@ -1,6 +1,6 @@
 var gulp = require('gulp')
   , connect = require('gulp-connect')
-  , pathreload = ['./public/*.html'];
+  , pathreload = ['./public/*'];
 
 gulp.task('connect', function() {
   connect.server({
