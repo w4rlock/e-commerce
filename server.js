@@ -10,7 +10,8 @@ var express = require('express')
   , app = express()
   , config = require('./config').init(app)
   , db = require('monk')(config.DB_URL)
-  , mail = require('./lib/mail');
+  , mail = require('./lib/mail')
+  , users = require('./lib/users');
 
 mail.init(config);
 
@@ -23,7 +24,7 @@ app.use('/api', auth({secret: secret }));
 app.use(require('body-parser')())
 //app.use(express.json());
 //app.use(express.urlencoded());
-//app.use(validator());
+app.use(validator());
 //app.use(express.responseTime());
 //app.use(express.compress());
 //app.use(connect.favicon());
@@ -33,7 +34,12 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 
 //-- ROUTES
-app.get('/', function(req, res) { res.send(app.routes); });
+app.get('/', function(req, res){ res.send(app.routes); });
+app.post('/login', users.authenticate(db, secret, jwt)); 
+app.post('/signup',  users.signup(db, mail)); //DONE 
+app.post('/api/profile', users.update(db));
+
+app.get('/confirm/email/:token', users.confirmEmail(db));  //DONE 
 app.all('*', function(req, res){ res.send({ err: 'Route not found'}, 404);});
 
 http.createServer(app).listen(config.APP_PORT, 

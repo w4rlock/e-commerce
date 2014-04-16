@@ -60,7 +60,7 @@ app.controller('LoginCtrl', [
         $window.sessionStorage.token = data.token;
         $rootScope.isAuthenticated = true;
         $scope.wellcome = 'Bienvenido';
-        $location.path('/profile');
+        $location.path('/');
       }).error(function (data, status, headers, config) {
         delete $window.sessionStorage.token;
         $rootScope.isAuthenticated = false;
