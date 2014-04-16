@@ -19,6 +19,6 @@ angular.module('modEcommerce', [
     }).when('/register', {
       templateUrl: 'build/views/register.html',
       controller: 'RegisterCtrl'
-    }).when('/404', { templateUrl: 'views/404.html' }).otherwise({ redirectTo: '/404' });
+    }).when('/404', { templateUrl: 'build/views/404.html' }).otherwise({ redirectTo: '/404' });
   }
 ]);

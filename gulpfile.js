@@ -63,10 +63,6 @@ gulp.task('scripts', function () {
   gulp.src(paths.js[0]).pipe(connect.reload());
 });
 
-gulp.task('clean', function () {
-   gulp.src('tmp', {read: false}).pipe(clean());
-});
-
 gulp.task('watch', function () {
   gulp.watch(paths.reloadAll, ['reloadAll']);
 });
